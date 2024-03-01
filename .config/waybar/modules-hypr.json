@@ -13,12 +13,23 @@
             "9": "IX",
             "10": "X"
         },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
         "on-click": "activate",
         "sort-by-number": true,
-        "active-only": false
+        //"active-only": true
     },
     "hyprland/window": {
-        //"format": "<span foreground=\"#A7C080\">󰅬 </span> {}", //everforest
         "format": "<span>󰅬 </span> {}",
         "max-length": 100
     },
