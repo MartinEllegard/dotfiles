@@ -1,0 +1,25 @@
+{
+    "position": "top",
+    "margin-top": 8,
+    "ipc": true,
+
+    "include": ["$HOME/dotfiles/waybar/modules-hypr.json"],
+
+    "modules-left": [
+        "hyprland/workspaces" 
+        "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "network",
+        "custom/updates",
+        "custom/keyboard-layout",
+        "cpu",
+        "temperature",
+        "memory",
+        "idle_inhibitor",
+        "pulseaudio",
+        "clock",
+        "tray",
+    ],
+}

@@ -3,7 +3,7 @@ local wezterm = require 'wezterm'
 return {
     color_scheme = 'Catppuccin Mocha',
     enable_tab_bar = false,
-    font_size = 16.0,
+    font_size = 13.0,
 
     macos_window_background_blur = 30,
     window_background_opacity = 0.78,
