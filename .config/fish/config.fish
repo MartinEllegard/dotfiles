@@ -29,7 +29,7 @@ set fish_greeting
 set TERM xterm-256color
 
 #Set default Editor
-set EDITOR lvim
+set EDITOR nvim
 
 # Set manpager
 set -x MANPAGER "lvim -c 'set ft=man'"

@@ -108,6 +108,23 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 --   },
 -- }
 
+-- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "zsh",
+    callback = function()
+        -- let treesitter use bash highlight for zsh files as well
+        require("nvim-treesitter.highlight").attach(0, "bash")
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "**/hypr*/*.conf",
+    callback = function()
+        -- let treesitter use bash highlight for zsh files as well
+        require("nvim-treesitter.highlight").attach(0, "hyprlang")
+    end,
+})
+
 -- -- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
 lvim.plugins = {
     {
@@ -118,12 +135,3 @@ lvim.plugins = {
         --"NLKNguyen/papercolor-theme"
     },
 }
-
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
