@@ -69,28 +69,32 @@ alias .5='cd ../../../../..'
 ## Software update
 if test "$os" = Darwin
     # do things for macOS
-    alias os-refresh-update="brew update && brew upgrade"   # Update brew pkg db and update packages
-    alias os-update="brew upgrade"                          # Update brew pkg db and update packages
-    alias os-remove="brew remove"                           # Update brew pkg db and update packages
+    alias os-refresh-update="brew update && brew upgrade" # Update brew pkg db and update packages
+    alias os-update="brew upgrade" # Update brew pkg db and update packages
+    alias os-remove="brew remove" # Update brew pkg db and update packages
     alias os-install="brew install"
     alias os-search="brew search"
 else if test "$os" = Linux
     # do things for Linux
-    alias os-update-std='sudo pacman -Syu'                  # update only standard pkgs
-    alias os-refresh-update='sudo pacman -Syyu'             # Refresh pkglist & update standard pkgs
-    alias os-update-aur='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
-    alias os-update='paru -Syu --noconfirm'                 # update standard pkgs and AUR pkgs (paru)
-    alias os-unlock='sudo rm /var/lib/pacman/db.lck'        # remove pacman lock
-    alias os-cleanup='sudo pacman -Rns (pacman -Qtdq)'      # remove orphaned packages
+    alias os-update-std='sudo pacman -Syu' # update only standard pkgs
+    alias os-refresh-update='sudo pacman -Syyu' # Refresh pkglist & update standard pkgs
+    alias os-update-aur='paru -Sua --noconfirm' # update only AUR pkgs (paru)
+    alias os-update='paru -Syu --noconfirm' # update standard pkgs and AUR pkgs (paru)
+    alias os-unlock='sudo rm /var/lib/pacman/db.lck' # remove pacman lock
+    alias os-cleanup='sudo pacman -Rns (pacman -Qtdq)' # remove orphaned packages
     alias os-install="paru -S"
     alias os-search="paru -Ss"
-    alias os-remove="paru -Rs"                              # Update brew pkg db and update packages
+    alias os-remove="paru -Rs" # Update brew pkg db and update packages
 else
     # do things for other operating systems
 end
+
 # Arch
-# Mac
-## Software update end
+# Update mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
