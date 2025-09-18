@@ -1,14 +1,12 @@
-
 set -l os (uname)
-
 
 ### PATH/EXPORT ###
 # Clear Path too avoid fish slowing down
 set -e fish_user_paths
 
 # Set theme
-set --export THEME gruvbox
-# set --export THEME catppuccin
+# set --export THEME gruvbox
+set --export THEME catppuccin
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -20,16 +18,10 @@ set --export ASPNETCORE_URLS "http://*:8080"
 
 if test "$os" = Darwin
     # do things for macOS
-    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin
+    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin
 else if test "$os" = Linux
     # do things for Linux
-    set -U fish_user_paths $HOME/.local/bin $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
-    if test "$HYPRSTARTED" = STARTED
-        if test "$RANDOMBGRUNNING" = RUNNING
-            set -Ux RANDOMBGRUNNING RUNNING
-            hyprctl dispatch exec ~/.config/hypr/scripts/random-bg.sh
-        end
-    end
+    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
 else
     # do things for other operating systems
 end
@@ -56,7 +48,6 @@ set EDITOR nvim
 set -x MANPAGER "nvim -c 'set ft=man'"
 ### SET OPTIONS END
 
-
 set -Ux FZF_DEFAULT_OPTS "\
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
@@ -70,7 +61,6 @@ function fish_user_key_bindings
     fish_vi_key_bindings
 end
 ### SET KEYBIND MODE END ###
-
 
 fastfetch
 #pfetch

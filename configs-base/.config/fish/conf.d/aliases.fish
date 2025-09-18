@@ -25,20 +25,30 @@ alias cd='z'
 # alias .4='cd ../../../..'
 # alias .5='cd ../../../../..'
 
+# Edit nvim config
+alias nvc='cd $HOME/.config/nvim && vim'
+
 alias v="fd --type f --hidden --exclude .git --exclude node_modules | fzf-tmux -p --reverse | xargs nvim"
 alias fedit="fd --type f --hidden --exclude .git --exclude node_modules | fzf-tmux -p --reverse | xargs hx"
 
-## Software update
 if test "$os" = Darwin
-    # do things for macOS
-    alias os-update-inputs="cd ~/nix && nix flake update" # update nix inputs
-    alias os-upgrade="cd ~/nix && darwin-rebuild switch --flake ." # Update run upgrade of nix flake
-    alias os-update="cd ~/nix && nix flake update && darwin-rebuild switch --flake ." # Update and upgrade nix flake
-    # alias os-remove="brew remove" # Update brew pkg db and update packages
-    # alias os-install="brew install"
-    # alias os-search="brew search"
+    # Mac specifik
+
+    ## Software update
+    alias os-remove="brew remove" # Update brew pkg db and update packages
+    alias os-install="brew install"
+    alias os-search="brew search"
+    alias os-update="brew update && brew upgrade"
+
+    ## Obsidian
+    alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes'
+    alias or='vim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes/00\ -\ Inbox/*.md'
+
+    alias ogf="cd ~/Library/Mobile\ Documents/iCloud~md\~obsidian/Documents/notes"
 else if test "$os" = Linux
-    # do things for Linux
+    # Linux specifik
+
+    ## Sofware update
     alias os-update-std='sudo pacman -Syu' # update only standard pkgs
     alias os-refresh-update='sudo pacman -Syyu' # Refresh pkglist & update standard pkgs
     alias os-update-aur='paru -Sua --noconfirm' # update only AUR pkgs (paru)
@@ -49,18 +59,21 @@ else if test "$os" = Linux
     alias os-search="paru -Ss"
     alias os-remove="paru -Rs" # Update brew pkg db and update packages
     alias update-home-manager="nix flake update --impure && home-manager switch"
+
+    # Arch
+    # Update mirrors
+    alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+    alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+    alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+    alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+    alias randombgscript="hyprctl dispatch exec ~/.config/hypr/scripts/random-bg.sh"
+
+    # Fix clipboard for xwayland 
+    alias clipfix="wl-paste -t text -w sh -c 'xclip -selection clipboard -o > /dev/null 2> /dev/null || xclip -selection clipboard'"
 else
     # do things for other operating systems
 end
-
-# Arch
-# Update mirrors
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-
-alias randombgscript="hyprctl dispatch exec ~/.config/hypr/scripts/random-bg.sh"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -92,15 +105,3 @@ alias pull='git pull origin'
 alias push='git push origin'
 alias tag='git tag'
 alias newtag='git tag -a'
-
-# Cloudflared open tunnels
-alias mctunnel="cloudflared access tcp --hostname minecraft.clenchedgaming.com --url localhost:25565"
-alias pgtunnel="cloudflared access tcp --hostname databases.clenchedgaming.com/pgs --url localhost:5434"
-
-alias sshhome="autossh -M -0 martin@193.71.243.35 -p 5555"
-
-# Notes
-alias notedir="cd Library/Mobile\ Documents/iCloud~md\~obsidian/Documents/notes/"
-
-
-alias clipfix="wl-paste -t text -w sh -c 'xclip -selection clipboard -o > /dev/null 2> /dev/null || xclip -selection clipboard'"
