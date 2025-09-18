@@ -1,0 +1,59 @@
+return {
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   opts = {
+  --     ensure_installed = {
+  --       "bash",
+  --       "c",
+  --       "diff",
+  --       "html",
+  --       "javascript",
+  --       "jsdoc",
+  --       "json",
+  --       "jsonc",
+  --       "lua",
+  --       "luadoc",
+  --       "luap",
+  --       "markdown",
+  --       "markdown_inline",
+  --       "printf",
+  --       "python",
+  --       "query",
+  --       "regex",
+  --       "toml",
+  --       "tsx",
+  --       "typescript",
+  --       "vim",
+  --       "vimdoc",
+  --       "xml",
+  --       "yaml",
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   event = { "BufReadPre", "BufNewFile", "BufWritePre" },
+  --   dependencies = {
+  --     "mason.nvim",
+  --     { "mason-org/mason-lspconfig.nvim", config = function() end },
+  --   },
+  --   opts = {
+  --     servers = {
+  --       marksman = {
+  --         mason = false,
+  --       },
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "mason-org/mason.nvim",
+  --   opts = {
+  --     ensure_installed = {
+  --       "lua_ls",
+  --       "stylua",
+  --       "shellcheck",
+  --       "shfmt",
+  --     },
+  --   },
+  -- },
+}
