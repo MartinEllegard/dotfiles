@@ -5,24 +5,41 @@
 -- ### Obsidian keybinds ###
 
 -- go to vault
-vim.keymap.set("n", "<leader>oo", ":cd /Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes<cr>")
+vim.keymap.set(
+  "n",
+  "<leader>oo",
+  ":cd /Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes<cr>",
+  {
+    desc = "Go to obsidian notes",
+  }
+)
 --
 -- convert note to template and remove leading white space
-vim.keymap.set("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+vim.keymap.set("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", {
+  desc = "Convert obsidian note to template",
+})
 -- strip date from note title and replace dashes with spaces
 -- must have cursor on title
-vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", {
+  desc = "Remove date from current line",
+})
 --
 -- search for files in full vault
 vim.keymap.set(
   "n",
   "<leader>os",
-  ':Telescope find_files search_dirs={"/Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes"}<cr>'
+  ':Telescope find_files search_dirs={"/Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes"}<cr>',
+  {
+    desc = "Search for files in obsidian vault",
+  }
 )
 vim.keymap.set(
   "n",
   "<leader>oz",
-  ':Telescope live_grep search_dirs={"/Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes"}<cr>'
+  ':Telescope live_grep search_dirs={"/Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes"}<cr>',
+  {
+    desc = "Search for files contents in obsidian vault",
+  }
 )
 --
 -- for review workflow
@@ -30,9 +47,14 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<leader>ok",
-  ":!mv '%:p' /Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes/01\\ -\\ Zettelkasten<cr>:bd<cr>"
+  ":!mv '%:p' /Users/martin/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/notes/01-Zettelkasten<cr>:bd<cr>",
+  {
+    desc = "Move current obsidian file to zettelkasten folder",
+  }
 )
 -- delete file in current buffer
-vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
+vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>", {
+  desc = "Go delete current buffer file",
+})
 
 -- ### Obsidian end ###

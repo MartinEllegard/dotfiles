@@ -10,14 +10,6 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
-  -- {
-  --   "tadmccorkle/markdown.nvim",
-  --   ft = "markdown", -- or 'event = "VeryLazy"'
-  --   -- event = "VeryLazy",
-  --   opts = {
-  --     -- configuration here or empty for defaults
-  --   },
-  -- },
 
   -- Obsidian plugin for feature integration
   {
@@ -43,7 +35,7 @@ return {
       workspaces = {
         {
           name = "personal",
-          path = "/Users/martin/Library/Mobile Documents/iCloud~md~obsidian/Documents/notes",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/notes",
         },
         -- {
         --   name = "work",
@@ -55,7 +47,7 @@ return {
         enable = false,
       },
 
-      notes_subdir = "00 - Inbox",
+      notes_subdir = "00-Inbox",
       new_notes_location = "notes_subdir",
 
       -- Template options

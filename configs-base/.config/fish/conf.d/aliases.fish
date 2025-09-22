@@ -3,9 +3,6 @@ set -l os (uname)
 
 ### ALIAS
 # App shortcuts
-alias please='sudo'
-alias vi='nvim'
-alias vim='nvim'
 alias svi='sudo nvim'
 if test "$os" = Darwin
     alias helix="hx"
@@ -41,10 +38,10 @@ if test "$os" = Darwin
     alias os-update="brew update && brew upgrade"
 
     ## Obsidian
-    alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes'
-    alias or='vim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes/00\ -\ Inbox/*.md'
+    alias note-new="~/dotfiles/bin-scripts/note-new.fish"
+    alias note-folder="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes"
+    alias note-review="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/notes/0-Inbox/*.md"
 
-    alias ogf="cd ~/Library/Mobile\ Documents/iCloud~md\~obsidian/Documents/notes"
 else if test "$os" = Linux
     # Linux specifik
 
