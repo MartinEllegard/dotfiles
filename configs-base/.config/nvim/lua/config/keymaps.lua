@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", {
   desc = "Remove date from current line",
 })
 --
--- search for files in full vault
+-- search for files in full vaultH
 vim.keymap.set(
   "n",
   "<leader>os",
