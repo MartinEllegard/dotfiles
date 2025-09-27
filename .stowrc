@@ -1,0 +1,6 @@
+--dir=~/dotfiles
+--target=~/
+--ignore='README.md'
+--ignore='configs-wayland'
+--ignore='temp.txt'
+--ignore='backgrounds'
