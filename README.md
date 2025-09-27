@@ -44,13 +44,19 @@ cd dotfiles && stow .
 
 **6. Install the rest of the apps you want using homebrew or download them manually**
 ```bash
-brew install fish ghostty tmux neovim btop lazygit unzip ripgrep bat eza fzf fd lazygit lazydocker tree-sitter-cli gcc uv zen orbstack nikitabobko/tap/aerospace
+brew install fish ghostty tmux neovim btop lazygit unzip ripgrep bat eza fzf fd lazygit lazydocker tree-sitter-cli gcc uv zen orbstack nikitabobko/tap/aerospace zoxide starship fastfetch
 ```
 
 **7. Set fish as default shell**
 ```bash
 chsh -s /opt/homebrew/bin/fish
 ```
+
+**8. Open ghostty and setup rustup**
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+**9. Reboot**
 
 ### Arch Systems
 Here the config uses foot terminal and hyprland for window management
