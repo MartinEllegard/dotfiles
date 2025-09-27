@@ -16,6 +16,10 @@ This config is built around ghostty as a terminal and aerospace as window manage
 **1. Install homebrew**
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo >> ~/.zprofile
+echo 'ecal "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
 **2. Install essentials**
@@ -40,7 +44,12 @@ cd dotfiles && stow .
 
 **6. Install the rest of the apps you want using homebrew or download them manually**
 ```bash
-brew install fish ghostty tmux neovim btop lazygit unzip ripgrep bat exa fzf fd lazygit lazydocker tree-sitter-cli gcc uv zen orbstack aerospace
+brew install fish ghostty tmux neovim btop lazygit unzip ripgrep bat eza fzf fd lazygit lazydocker tree-sitter-cli gcc uv zen orbstack nikitabobko/tap/aerospace
+```
+
+**7. Set fish as default shell**
+```bash
+chsh -s /opt/homebrew/bin/fish
 ```
 
 ### Arch Systems
