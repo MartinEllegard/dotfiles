@@ -2,5 +2,7 @@
 --target=~/
 --ignore='README.md'
 --ignore='configs-wayland'
+--ignore='bin-scripts'
+--ignore='install-scripts'
 --ignore='temp.txt'
 --ignore='backgrounds'
