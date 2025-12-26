@@ -3,10 +3,26 @@ return {
   --   "neovim/nvim-lspconfig",
   --   config = function()
   --     local lspconfig = require("lspconfig")
-  --     lspconfig.sourcekit.setup({})
+  --     lspconfig.sourcekit.setup({
+  --       capabilities = {
+  --         workspace = {
+  --           didChangeWatchedFiles = {
+  --             dynamicRegistration = true,
+  --           },
+  --         },
+  --       },
+  --     })
   --   end,
   -- },
-
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = false,
+    config = function(opts)
+      local luasnip = require("luasnip")
+      luasnip.setup(opts)
+      require("luasnip.loaders.from_snipmate").load({ paths = "./snippets" })
+    end,
+  },
   {
     "wojciech-kulik/xcodebuild.nvim",
     dependencies = {
@@ -29,28 +45,14 @@ return {
       })
     end,
   },
-  -- {
-  --   "stevearc/conform.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     local conform = require("conform")
-  --
-  --     conform.setup({
-  --       formatters_by_ft = {
-  --         swift = { "swiftformat" },
-  --       },
-  --       format_on_save = function(bufnr)
-  --         local ignore_filetypes = { "oil" }
-  --         if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-  --           return
-  --         end
-  --
-  --         return { timeout_ms = 500, lsp_fallback = true }
-  --       end,
-  --       log_level = vim.log.levels.ERROR,
-  --     })
-  --   end,
-  -- },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        swift = { "swiftformat" },
+      },
+    },
+  },
   -- {
   --   "mfussenegger/nvim-lint",
   --   event = { "BufReadPre", "BufNewFile" },

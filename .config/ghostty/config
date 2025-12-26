@@ -1,4 +1,4 @@
-theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+theme = dark:Gruvbox Dark,light:Gruvbox Light
 # theme = GruvboxDark
 font-family = Meslo LGS Nerd Font Mono
 # font-family = CaskaydiaMono Nerd Font
