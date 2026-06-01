@@ -8,6 +8,10 @@ set -e fish_user_paths
 # set --export THEME gruvbox
 set --export THEME catppuccin
 
+# Java
+set --export JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+set --export ANDROID_HOME $HOME/Library/Android/sdk
+
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
@@ -16,12 +20,16 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set --export ASPNETCORE_ENVIRONMENT Development
 set --export ASPNETCORE_URLS "http://*:8080"
 
+set --export GEM_HOME "$HOME/.gem"
+
 if test "$os" = Darwin
     # do things for macOS
-    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin
+    set --export DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
+    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Users/martin/develop/flutter/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin /Users/martin/.gem/ruby/3.4.0/bin /Users/martin/.gem/bin
+    set -U fish_user_paths $fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 else if test "$os" = Linux
     # do things for Linux
-    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
+    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/develop/flutter/bin $HOME/.npm-global/bin $fish_user_paths
 else
     # do things for other operating systems
 end
