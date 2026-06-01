@@ -18,10 +18,13 @@ set --export ASPNETCORE_URLS "http://*:8080"
 
 if test "$os" = Darwin
     # do things for macOS
-    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin
+    # Set Dotnet Root
+    set --export DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
+    # Set Path
+    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.dotnet/tools /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/develop/flutter/bin /Users/martin/.npm-global/bin
 else if test "$os" = Linux
     # do things for Linux
-    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
+    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.dotnet/tools $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
 else
     # do things for other operating systems
 end
@@ -70,3 +73,10 @@ starship init fish | source
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# pnpm
+set -gx PNPM_HOME "/Users/martin/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
