@@ -36,7 +36,13 @@ brew install git gh stow
 **3. Clone this repo**
 
 ```bash
-git clone https://github.com/MartinEllegard/dotfiles.git
+git clone --remote-submodules j3 https://github.com/MartinEllegard/dotfiles.git
+```
+
+For missing submodules run:
+
+```bash
+git submodule update --init --recursive
 ```
 
 **4. Make sure you have the base folders in place**
