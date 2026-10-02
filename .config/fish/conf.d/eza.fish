@@ -1,4 +1,3 @@
-
 function __fish_eza_install --on-event fish-eza_install
     set -Ux __FISH_EZA_BASE_ALIASES l ll lg le lt lc lo
     set -Ux __FISH_EZA_EXPANDED a d i id aa ad ai aid aad aai aaid
@@ -33,11 +32,11 @@ function __fish_eza_install --on-event fish-eza_install
 
     for a in $__FISH_EZA_BASE_ALIASES
         set -l opt_name (string join '_' "EZA" (string upper $a) "OPTIONS")
-        if test $a = ll
-            alias --save "$a" eza_git
-        else
-            alias --save "$a" "eza \$EZA_STANDARD_OPTIONS \$$opt_name"
-        end
+        # if test $a = ll
+        #     alias --save "$a" eza_git
+        # else
+        alias --save "$a" "eza \$EZA_STANDARD_OPTIONS \$$opt_name"
+        # end
         set -a __FISH_EZA_OPT_NAMES "$opt_name"
         set -a __FISH_EZA_ALIASES "$a"
 
@@ -48,11 +47,11 @@ function __fish_eza_install --on-event fish-eza_install
                 continue
             end
             set -l exp_opt_name (string join '_' "EZA" $__FISH_EZA_EXPANDED_OPT_NAME[$i] "OPTIONS")
-            if string match --quiet 'll*' "$name"
-                alias --save "$name" "eza_git \$$exp_opt_name"
-            else
-                alias --save "$name" "eza \$EZA_STANDARD_OPTIONS \$$exp_opt_name \$$opt_name"
-            end
+            # if string match --quiet 'll*' "$name"
+            #     alias --save "$name" "eza_git \$$exp_opt_name"
+            # else
+            alias --save "$name" "eza \$EZA_STANDARD_OPTIONS \$$exp_opt_name \$$opt_name"
+            # end
             set -a __FISH_EZA_ALIASES "$name"
 
             if not contains $exp_opt_name $__FISH_EZA_OPT_NAMES
