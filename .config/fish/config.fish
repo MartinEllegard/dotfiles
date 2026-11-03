@@ -6,11 +6,11 @@ set -e fish_user_paths
 
 # Set theme
 # set --export THEME gruvbox
-set --export THEME catppuccin
+# set --export THEME catppuccin
 
 # Java
-set --export JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-set --export ANDROID_HOME $HOME/Library/Android/sdk
+# set --export JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+# set --export ANDROID_HOME $HOME/Library/Android/sdk
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -22,14 +22,31 @@ set --export ASPNETCORE_URLS "http://*:8080"
 
 set --export GEM_HOME "$HOME/.gem"
 
+# Disabled: theme_gruvbox prints OSC 10/11 (terminal fg/bg) sequences, which make tmux
+# paint every pane with a solid background. Ghostty's own theme already provides Gruvbox.
+theme_gruvbox dark medium
+
 if test "$os" = Darwin
-    # do things for macOS
+    # Java / Kotlin
+    #
+    set -gx DOTNET_TOOLS $HOME/.dotnet/tools
+    set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@17"
+    # set -gx ANDROID_HOME /opt/homebrew/share/android-commandlinetools
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+    set -gx CPPFLAGS -I$JAVA_HOME/include
+
+    ### MacOS os specific environment
+    #Clang deps path 
+    set --export LIBRARY_PATH /opt/homebrew/opt/openssl@3/lib /opt/homebrew/lib $LIBRARY_PATH
     set --export DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
-    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Users/martin/.nix-profile/bin /Users/martin/develop/flutter/bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin /Users/martin/.gem/ruby/3.4.0/bin /Users/martin/.gem/bin
-    set -U fish_user_paths $fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
+    set --export flutter_default_path $HOME/fvm/default
+    set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin /Users/martin/.gem/ruby/3.4.0/bin /Users/martin/.gem/bin
+    set -U fish_user_paths $fish_user_paths $JAVA_HOME/bin $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $ANDROID_HOME/tools $ANDROID_HOME/tools/bin
+    set -U fish_user_paths $fish_user_paths $flutter_default_path/bin
+    set -U fish_user_paths $fish_user_paths $DOTNET_TOOLS
 else if test "$os" = Linux
-    # do things for Linux
-    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/develop/flutter/bin $HOME/.npm-global/bin $fish_user_paths
+    ### Linux os specific environment
+    set -U fish_user_paths $HOME/.local/bin $HOME/bin-scripts $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.cargo/bin $HOME/.cargo/bin $HOME/go/bin $HOME/.npm-global/bin $fish_user_paths
 else
     # do things for other operating systems
 end
@@ -70,7 +87,7 @@ function fish_user_key_bindings
 end
 ### SET KEYBIND MODE END ###
 
-fastfetch
+# fastfetch
 #pfetch
 zoxide init fish | source
 starship init fish | source

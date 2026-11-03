@@ -7,3 +7,6 @@
 [submodule ".config/tmux/plugins/tmux-plugins/tmux-cpu"]
 	path = .config/tmux/plugins/tmux-plugins/tmux-cpu
 	url = https://github.com/tmux-plugins/tmux-cpu.git
+[submodule ".lazy-idea"]
+  path = .lazy-idea
+  url = https://github.com/cufarvid/lazy-idea.git

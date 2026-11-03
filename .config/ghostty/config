@@ -1,11 +1,11 @@
-theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-#theme = dark:Gruvbox Dark,light:Gruvbox Light
+# theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+theme = dark:Gruvbox Dark,light:Gruvbox Light
 font-family = Meslo LGS Nerd Font Mono
 # font-family = CaskaydiaMono Nerd Font
 #font-family = CaskaydiaCove Nerd Font
 font-size = 16
-background-opacity = 1
-# background-opacity = 0.95
+# background-opacity = 1
+background-opacity = 0.90
 gtk-titlebar = false
 
 # Mac OS things

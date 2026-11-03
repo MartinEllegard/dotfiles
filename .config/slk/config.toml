@@ -1,0 +1,63 @@
+[general]
+# default_workspace = "myteam"
+use_slack_sections = true # use real Slack sidebar sections (default).
+# set false to use [sections.*] globs instead.
+
+[appearance]
+theme = "catppuccin"
+timestamp_format = "3:04 PM"
+image_protocol = "kitty"     # auto | kitty | sixel | halfblock | off
+max_image_rows = 20          # cap inline image height in terminal rows
+max_image_cols = 60          # cap inline image width in terminal columns
+
+[sidebar]
+hide_inactive_after_days = 30 # auto-hide stale channels; 0 disables
+
+[animations]
+enabled = true
+smooth_scrolling = true
+typing_indicators = true
+
+[notifications]
+enabled = true
+on_mention = true
+on_dm = true
+on_keyword = ["deploy", "incident"]
+quiet_hours = "22:00-08:00"         # planned
+
+[cache]
+message_retention_days = 30
+max_db_size_mb = 500
+max_image_cache_mb = 200
+
+[sections.Alerts]
+channels = ["alerts", "ops", "*-alerts"]
+order = 1
+
+[workspaces.fygi-as]
+theme = "Catppuccin Mocha"
+version_ts = "1792736252"
+team_id = "TA4AXFAG7"
+
+# [sections.Engineering]
+# channels = ["eng-*", "deploys", "bugs"]
+# order = 2
+#
+# # Per-workspace overrides — slug is whatever you chose at --add-workspace
+# # time; team_id ties it to the underlying Slack workspace.
+# [workspaces.work]
+# team_id = "T01ABCDEF"
+# order = 1                  # rail position; 1-based, used by 1-9 keys
+# theme = "dracula"
+# use_slack_sections = false # this workspace uses [sections.*] globs;
+# # other workspaces still use Slack sections
+#
+# [workspaces.work.sections.Engineering]
+# channels = ["eng-*", "deploys"]
+# order = 1
+
+# [theme]
+# primary    = "#4A9EFF"
+# accent     = "#50C878"
+# background = "#1A1A2E"
+# text       = "#E0E0E0"
