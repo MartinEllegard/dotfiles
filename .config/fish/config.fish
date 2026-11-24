@@ -17,14 +17,14 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 # Dotnet Development
-set --export ASPNETCORE_ENVIRONMENT Development
-set --export ASPNETCORE_URLS "http://*:8080"
+# set --export ASPNETCORE_ENVIRONMENT Development
+# set --export ASPNETCORE_URLS "http://*:8080"
 
 set --export GEM_HOME "$HOME/.gem"
 
 # Disabled: theme_gruvbox prints OSC 10/11 (terminal fg/bg) sequences, which make tmux
 # paint every pane with a solid background. Ghostty's own theme already provides Gruvbox.
-theme_gruvbox dark medium
+# theme_gruvbox dark medium
 
 if test "$os" = Darwin
     # Java / Kotlin
@@ -38,7 +38,7 @@ if test "$os" = Darwin
     ### MacOS os specific environment
     #Clang deps path 
     set --export LIBRARY_PATH /opt/homebrew/opt/openssl@3/lib /opt/homebrew/lib $LIBRARY_PATH
-    set --export DOTNET_ROOT /opt/homebrew/opt/dotnet/libexec
+    set --export DOTNET_ROOT "$HOME/Library/Application Support/dotnetup/dotnet"
     set --export flutter_default_path $HOME/fvm/default
     set -U fish_user_paths /Users/martin/.local/bin /Users/martin/bin-scripts /Users/martin/.local.bin /Applications /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/libpq/bin /Users/martin/go/bin /Users/martin/.omnisharp/bin /Users/martin/.cargo/bin /Users/martin/.npm-global/bin /Users/martin/.gem/ruby/3.4.0/bin /Users/martin/.gem/bin
     set -U fish_user_paths $fish_user_paths $JAVA_HOME/bin $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $ANDROID_HOME/tools $ANDROID_HOME/tools/bin
@@ -50,6 +50,9 @@ else if test "$os" = Linux
 else
     # do things for other operating systems
 end
+
+set -U fish_user_paths $fish_user_paths $HOME/.dotnetup
+set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 ### PATH END ###
 
 ### SET OPTIONS ###
