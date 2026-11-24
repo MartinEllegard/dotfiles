@@ -20,6 +20,7 @@ set --export PATH $BUN_INSTALL/bin $PATH
 # set --export ASPNETCORE_ENVIRONMENT Development
 # set --export ASPNETCORE_URLS "http://*:8080"
 
+set --export SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
 set --export GEM_HOME "$HOME/.gem"
 
 # Disabled: theme_gruvbox prints OSC 10/11 (terminal fg/bg) sequences, which make tmux
